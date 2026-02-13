@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Between Us 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9ec4, #ff4f81, #ff85a2);
+            position: relative;
+        }
+
+        .heart { position: absolute; animation: float 6s linear infinite; opacity: 0.7; z-index: 0; }
+        @keyframes float { from { transform: translateY(110vh); } to { transform: translateY(-10vh); } }
+
+        .container {
+            width: 95%;
+            max-width: 750px;
+            min-height: 550px;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 25px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+
+        .view-section { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center; transition: 0.5s; }
+        .hidden { display: none !important; }
+
+        .corgi { font-size: 100px; animation: bounce 1.5s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        
+        .dots { display: flex; gap: 10px; margin-bottom: 20px; }
+        .dot { width: 15px; height: 15px; border-radius: 50%; background: white; opacity: 0.3; transition: 0.3s; }
+        
+        .keypad { display: grid; grid-template-columns: repeat(3, 65px); gap: 15px; }
+        .key {
+            width: 65px; height: 65px; border-radius: 50%; background: white;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 22px; cursor: pointer; transition: 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            user-select: none;
+        }
+        .key:active { transform: scale(0.9); background: #ff4f81; color: white; }
+
+        .menu-container { width: 100%; padding: 40px; animation: fadeIn 0.8s; }
+        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .circle-btn {
+            width: 130px; height: 130px; background: white; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer; transition: 0.3s; font-size: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .circle-btn:hover { transform: scale(1.1) rotate(5deg); border: 4px solid #ff4f81; }
+
+        /* --- SCRAPBOOK GALLERY STYLES --- */
+        .scrapbook-view {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #fff5f8;
+            overflow-y: auto;
+        }
+        .scrapbook-item { position: relative; display: flex; flex-direction: column; align-items: center; }
+        .polaroid { background: white; padding: 8px 8px 25px 8px; box-shadow: 0 8px 15px rgba(0,0,0,0.1); width: 160px; transition: 0.3s; }
+        .polaroid img { width: 100%; height: 140px; object-fit: cover; }
+        .caption { font-family: 'Dancing Script', cursive; font-size: 13px; color: #555; margin-top: 8px; max-width: 160px; line-height: 1.2; }
+
+        /* --- FLOWER BOUQUET STYLES --- */
+        .flower-view { background: #fff5f8; display: flex; flex-direction: row; align-items: center; padding: 30px; gap: 20px; text-align: left; }
+        .bouquet-container { position: relative; width: 250px; height: 350px; display: flex; justify-content: center; }
+        .my-bouquet { width: 100%; height: auto; position: absolute; bottom: 0; z-index: 2; object-fit: contain; }
+        .flower-photo { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; position: absolute; z-index: 1; object-fit: cover; animation: sway 3s ease-in-out infinite; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        @keyframes sway { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+
+        /* Choice 1 Layout Styles */
+        .letter-view { display: flex; flex-direction: row; width: 100%; padding: 30px; gap: 30px; background: #fffef0; overflow-y: auto; align-items: center;}
+        .video-wrapper { width: 100%; border-radius: 15px; overflow: hidden; background: #000; }
+        video { width: 100%; display: block; }
+        
+        .back-btn { padding: 8px 20px; border-radius: 20px; border: none; background: #ff4f81; color: white; font-weight: 600; cursor: pointer; transition: 0.3s; margin: 10px; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 700px) {
+            .letter-view { flex-direction: column; padding: 15px; }
+            .flower-view { flex-direction: column; }
+            .scrapbook-view { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="card">
+    <div class="view-section" id="loginLeft">
+        <div class="corgi">🐶</div>
+        <h1 style="color:white; text-shadow: 0 0 15px #ff4f81;">Just Between Us 💌</h1>
+    </div>
+    
+    <div class="view-section" id="loginRight">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <div class="keypad">
+            <div class="key">1</div><div class="key">2</div><div class="key">3</div>
+            <div class="key">4</div><div class="key">5</div><div class="key">6</div>
+            <div class="key">7</div><div class="key">8</div><div class="key">9</div>
+            <div></div><div class="key">0</div><div></div>
+        </div>
+    </div>
+
+    <div id="menuSection" class="hidden menu-container view-section">
+        <h2 style="color: white; margin-bottom: 30px;">CHOOSE ONE TO BEGIN</h2>
+        <div class="menu-grid">
+            <div class="circle-btn" onclick="handleChoice(1)">✉️</div>
+            <div class="circle-btn" onclick="handleChoice(2)">🎵</div>
+            <div class="circle-btn" onclick="handleChoice(3)">📸</div>
+            <div class="circle-btn" onclick="handleChoice(4)">💐</div>
+        </div>
+    </div>
+
+    <div id="letterSection" class="hidden letter-view">
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center;">
+             <div class="polaroid" style="width:320px; padding: 12px 12px 50px 12px; transform: rotate(-2deg); position: relative;">
+                <img src="us.jpg" style="width:100%; height:360px; object-fit:cover;" onerror="this.src='https://via.placeholder.com/320x420'">
+                <p style="font-family:'Dancing Script'; position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); font-size: 24px; color: #ff4f81;">09.22.24</p>
+             </div>
+             <button class="back-btn" onclick="backToMenu()" style="margin-top: 20px;">Back</button>
+        </div>
+        <div style="flex:1.2; padding:10px; text-align: left;">
+            <h2 style="font-family:'Dancing Script'; color:#ff4f81; font-size: 28px;">My Dearest Angel,</h2>
+            <p style="font-size:14px; margin-top:10px; line-height: 1.5;">I just wanted to greet you a Happy Valentine’s Day. I know it’s been a while since we last talked, but I hope you’re doing well and that life has been treating you kindly.</p>
+            <p style="font-size:14px; margin-top:10px; line-height: 1.5;">Even though things changed between us, I still genuinely appreciate what we had. The memories we shared mean a lot to me, and I’ll always be thankful for that part of my life.</p>
+            <p style="font-size:14px; margin-top:10px; line-height: 1.5;">I don’t want to make things complicated or bring up the past. I just wanted to take this day as a small chance to wish you happiness, love, and peace. In whatever form that looks like for you now.</p>
+            <p style="font-size:14px; margin-top:10px; line-height: 1.5;">Take care of yourself always. No pressure to respond. I just sincerely hope you have a beautiful Valentine’s Day.</p>
+        </div>
+    </div>
+
+    <div id="musicSection" class="hidden view-section" style="width:100%;">
+        <h2 style="color:white; margin-bottom:15px; font-family:'Dancing Script';">Our Song...</h2>
+        <div class="video-wrapper">
+            <video id="localVideo" controls>
+                <source src="Pag-Ibig ay Kanibalismo II.mp4" type="video/mp4">
+            </video>
+        </div>
+        <button class="back-btn" onclick="backToMenu()">Back to Menu</button>
+    </div>
+
+    <div id="gallerySection" class="hidden scrapbook-view">
+        <div class="scrapbook-item" style="transform:rotate(-5deg)"><div class="polaroid"><img src="photo1.jpg" onerror="this.src='https://via.placeholder.com/150'"></div><p class="caption">I still remember the first time we shared a moment... 📸</p></div>
+        <div class="scrapbook-item" style="transform:rotate(4deg)"><div class="polaroid"><img src="photo2.jpg" onerror="this.src='https://via.placeholder.com/150'"></div><p class="caption">This memory warms my heart every single day. ✨</p></div>
+        <div class="scrapbook-item" style="transform:rotate(-3deg)"><div class="polaroid"><img src="photo3.jpg" onerror="this.src='https://via.placeholder.com/150'"></div><p class="caption">Distance is just a number when it comes to us. ☁️</p></div>
+        <div class="scrapbook-item" style="transform:rotate(2deg)"><div class="polaroid"><img src="photo4.jpg" onerror="this.src='https://via.placeholder.com/150'"></div><p class="caption">I hope you feel my warm hug through this photo. 💕</p></div>
+        <div style="grid-column: 1 / span 2; text-align:center;"><button class="back-btn" onclick="backToMenu()">Back</button></div>
+    </div>
+
+    <div id="flowerSection" class="hidden flower-view">
+        <div class="bouquet-container">
+            <img src="f1.jpg" class="flower-photo" style="top:25px; left:40px;" onerror="this.src='https://via.placeholder.com/65'">
+            <img src="f2.jpg" class="flower-photo" style="top:5px; left:95px;" onerror="this.src='https://via.placeholder.com/65'">
+            <img src="f3.jpg" class="flower-photo" style="top:30px; left:150px;" onerror="this.src='https://via.placeholder.com/65'">
+            <img src="bouquet.png" class="my-bouquet" alt="Bouquet" onerror="this.src='https://i.ibb.co/LkhmPrD/bouquet-wrapper.png'">
+        </div>
+        <div style="flex:1;">
+            <h1 style="color:#ff4f81; font-weight:600; text-transform:uppercase;">Flowers For You!</h1>Every flower that I see makes me think of you. You're always on my mind, no matter the day or season. I hope these flowers bring a little joy to your heart today! 💐</p>
+            <button class="back-btn" onclick="backToMenu()">Back to Menu</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let password = "";
+    const correctPassword = "082210";
+    const dots = document.querySelectorAll(".dot");
+    const video = document.getElementById("localVideo");
+
+    document.querySelectorAll(".key").forEach(key => {
+        key.addEventListener("click", () => {
+            if (password.length < 6) {
+                password += key.innerText;
+                dots[password.length - 1].style.opacity = "1";
+                dots[password.length - 1].style.background = "#ff4f81";
+                if (password.length === 6) setTimeout(checkPassword, 300);
+            }
+        });
+    });
+
+    function checkPassword() {
+        if (password === correctPassword) {
+            document.getElementById("loginLeft").classList.add("hidden");
+            document.getElementById("loginRight").classList.add("hidden");
+            document.getElementById("menuSection").classList.remove("hidden");
+        } else {
+            password = "";
+            dots.forEach(d => { d.style.opacity = "0.3"; d.style.background="white"; });
+        }
+    }
+
+    function handleChoice(choice) {
+        document.getElementById("menuSection").classList.add("hidden");
+        const sections = [null, 'letterSection', 'musicSection', 'gallerySection', 'flowerSection'];
+        const widths = [null, '880px', '600px', '850px', '800px'];
+        
+        document.getElementById("card").style.maxWidth = widths[choice];
+        document.getElementById(sections[choice]).classList.remove("hidden");
+        if(choice === 2) video.play().catch(() => {});
+    }
+
+    function backToMenu() {
+        document.querySelectorAll('.container > div:not(#loginLeft):not(#loginRight)').forEach(div => div.classList.add('hidden'));
+        document.getElementById("card").style.maxWidth = "750px";
+        document.getElementById("menuSection").classList.remove("hidden");
+        video.pause();
+    }
+
+    for(let i=0; i<15; i++){
+        let heart = document.createElement("div");
+        heart.className = "heart"; heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (15 + Math.random() * 20) + "px";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+        document.body.appendChild(heart);
+    }
+</script>
+</body>
+</html>
